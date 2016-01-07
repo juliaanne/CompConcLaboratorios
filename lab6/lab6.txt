@@ -1,0 +1,6 @@
+Disciplina: Computacao Concorrente
+Prof.: Silvana Rossetto
+Laboratório: 6
+Julia Anne de Souza Alves
+
+Atividade 1
