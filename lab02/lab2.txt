@@ -1,0 +1,149 @@
+Disciplina: Computacao Concorrente
+Prof.: Silvana Rossetto
+Laboratório: 2
+Julia Anne de Souza Alves
+
+Atividade 1
+Máquina com 4 processadores.
+Realizei uma média entre os tempos de execução.
+
+Tamanho do Vetor 10⁵
+nthreads 1
+Inicialização: 0.00087
+Incremento: 0.00082
+Finalizações: 0.000086
+
+nthreads 2
+Inicialização: 0.00089
+Incremento: 0.00086
+Finalizações: 0.000051
+
+nthreads 3
+Inicialização: 0.00090
+Incremento: 0.00073
+Finalizações: 0.000047
+
+nthreads 4
+Inicialização: 0.00089
+Incremento: 0.00080
+Finalizações: 0.000055
+
+
+Tamanho do Vetor 10⁶
+nthreads 1
+Inicialização: 0.0078
+Incremento: 0.0056
+Finalizações: 0.00024
+
+nthreads 2
+Inicialização: 0.0073
+Incremento: 0.0049
+Finalizações: 0.00019
+
+nthreads 3
+Inicialização: 0.0072
+Incremento: 0.0035
+Finalizações: 0.00020c
+
+nthreads 4
+Inicialização: 0.0068
+Incremento: 0.0035
+Finalizações: 00020
+
+
+Tamanho do Vetor 10⁷
+nthreads 1
+Inicialização: 0.0037
+Incremento: 0.030
+Finalizações: 0.00016
+
+nthreads 2
+Inicialização: 0.034
+Incremento: 0.015
+Finalizações: 0.00027
+
+nthreads 3
+Inicialização: 0.035
+Incremento: 0.016
+Finalizações: 0.00035
+
+nthreads 4
+Inicialização: 0.035
+Incremento:  0.014
+Finalizações: 0.00027
+
+
+Tamanho do Vetor 10⁸
+nthreads 1
+Inicialização: 0.298
+Incremento: 0.2439
+Finalizações: 0.0016
+
+nthreads 2
+Inicialização: 0.296
+Incremento: 0.1329
+Finalizações: 0.00097
+
+nthreads 3
+Inicialização: 0.301
+Incremento: 0.0906
+Finalizações: 0.001
+
+nthreads 4
+Inicialização: 0.3060
+Incremento: 0.1034
+Finalizações: 0.00063
+
+Tamanho do Vetor 10⁹
+Não foi possível executar por erro no Malloc, problemas na memória.
+A partir de 10⁷ o tempo de execução torna-se menor com mais de uma thread.
+
+
+
+Atividade 2
+
+Implementação da solução sequencial.
+
+
+Com matriz 256x256
+Tempo inicializacao: 0.03139400
+Tempo execucaos: 0.14483309
+Tempo finalizacao: 0.07254291
+
+Segundo a Lei de Amdahl:
+0.03 + 0.07 + 0.14 = 0,24
+0.03 + 0.07 + 0.14/4 = 0.135
+Estimativa de ganho = 1,77
+
+
+Com matriz 512x512
+Tempo inicializacao: 0.09775209
+Tempo execucaos: 0.89770293
+Tempo finalizacao: 0.42872000
+
+Segundo a Lei de Amdahl:
+0.09 + 0.42 + 0.9 = 1,41
+0.09 + 0.42 + 0.0/4 = 0,735
+Estimativa de ganho = 1,91
+
+
+Com matriz 1024x1024
+Tempo inicializacao: 0.26526403
+Tempo execucaos: 13.01297998
+Tempo finalizacao: 1.79001904
+
+Segundo a Lei de Amdahl:
+0.26 + 1.79 + 13 = 15,05
+0.26 + 1.79 + 13/4 = 5,3
+Estimativa de ganho = 2,83
+
+
+Com matriz 2048x2048
+Tempo inicializacao: 0.77440500
+Tempo execucaos: 105.35617089
+Tempo finalizacao: 7.28139997
+
+Segundo a Lei de Amdahl:
+0.77 + 7.28 + 105 = 113,15
+0.77 + 7.28 + 105/4 = 34,3
+Estimativa de ganho = 3,29

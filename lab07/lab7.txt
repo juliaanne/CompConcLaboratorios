@@ -1,0 +1,44 @@
+Disciplina: Computacao Concorrente
+Prof.: Silvana Rossetto
+Laboratório: 6
+Julia Anne de Souza Alves
+
+Atividade 1
+2) 
+Com duas threads A e uma B:
+	A thread do tipo B sempre irá esperar até que as threads tipo A incrementem o valor da variável de controle x. 
+	Como a threads A apenas notificam a thread B quando x é igual a 2, ou seja, quando x é igual ao numero de threads A. Isso garante que todas as threads A executem e imprimam Hello, antes da thread B executar e imprimir seu Bye.
+	O código não está dinamico para os numeros de threads A, porém funciona.
+
+3)
+Com uma thread A e uma B:
+	Como a thread A só sinaliza B quando x for igual a 2, a thread B nunca será sinalizada e ficará esperando para sempre.
+	Isso acontece porque apenas a thread A incrementa o valor de X e como só temos uma thread A, x será no máximo 1.
+	A dinamização do código para a sinalização ocorrer quando x for igual ao numero de threads A resolveria o problema.
+
+4)
+Sim, pelos motivos expostos acima.
+
+Observação:
+Com três threads tipo A, o código atual só garante que o B irá executar e imprimir Bye após DUAS dessas TRÊS threads A executarem; O que quer dizer que poderá ser impresso Hello por alguma thread A após a impressão Bye de B.
+
+
+Atividade 2
+2)
+Com duas threads A e uma B:
+	As threads do tipo A ficarão bloqueadas enquanto x for igual a zero, ou seja, enquanto a thread B não executar, visto que apenas a thread B altera o valor de x.
+
+
+Atividade 3
+2)
+O log está correto. 
+	As threads do tipo A incrementam o valor de x e apenas sinalizam a thread do tipo B quando o valor de x for divisível por 10. 
+	A thread B apenas imprime o valor de x quando x for realmente divisível por 10.
+
+3) 
+Não, pois x poderá ser impresso em um valor não divisível por 10. 
+	Como B apenas testará uma vez se X é divisível por 10, ela entrará no fluxo de execução dentro do if e poderá imprimir quando outra thread A já tiver incrementado o valor de x, causando assim uma confusão e a thread B imprimindo a valor errado.
+	Dentro de um while, será garantido que a thread B apenas imprimirá se x for divisível.
+
+4) 
+Não. Em algumas execuções, x foi impresso em um valor não divisível por 10 como previsto acima.

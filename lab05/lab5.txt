@@ -1,0 +1,103 @@
+10³
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.140592813491821
+O valor de pi paralelo é: 3.140593290328979
+O valor de pi sequencial associativo é: 3.140593290328979
+
+Tempo do calculo sequencial: 0.00003195
+Tempo do calculo paralelo: 0.00035214
+Tempo do calculo sequencial associativo: 0.00003290
+
+Speedup: 0,090730959
+
+
+10⁴
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141498327255249
+O valor de pi paralelo é: 3.141497373580933
+O valor de pi sequencial associativo é: 3.141497373580933
+
+Tempo do calculo sequencial: 0.00032401
+Tempo do calculo paralelo: 0.00051403
+Tempo do calculo sequencial associativo: 0.00032496
+
+Speedup: 0,63033286
+
+
+10⁵
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141585588455200
+O valor de pi paralelo é: 3.141585350036621
+O valor de pi sequencial associativo é: 3.141585350036621
+
+Tempo do calculo sequencial: 0.00324702
+Tempo do calculo paralelo: 0.00194693
+Tempo do calculo sequencial associativo: 0.00325894
+
+Speedup: 1,667764121
+
+
+10⁶
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141595125198364
+O valor de pi paralelo é: 3.141594648361206
+O valor de pi sequencial associativo é: 3.141594648361206
+
+Tempo do calculo sequencial: 0.02171993
+Tempo do calculo paralelo: 0.01566601
+Tempo do calculo sequencial associativo: 0.02168393
+
+Speedup: 1,386436623
+
+
+10⁷
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141596794128418
+O valor de pi paralelo é: 3.141596555709839
+O valor de pi sequencial associativo é: 3.141596555709839
+
+Tempo do calculo sequencial: 0.21674800
+Tempo do calculo paralelo: 0.11457491
+Tempo do calculo sequencial associativo: 0.21670604
+
+Speedup: 1,891757977
+
+
+10⁸
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141596794128418
+O valor de pi paralelo é: 3.141596794128418
+O valor de pi sequencial associativo é: 3.141596794128418
+
+Tempo do calculo sequencial: 2.16711187
+Tempo do calculo paralelo: 1.08876801
+Tempo do calculo sequencial associativo: 2.16702223
+
+Speedup: 1,990425738
+
+
+10⁹
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141596794128418
+O valor de pi paralelo é: 3.141596794128418
+O valor de pi sequencial associativo é: 3.141596794128418
+
+Tempo do calculo sequencial: 21.67307401
+Tempo do calculo paralelo: 10.85251904
+Tempo do calculo sequencial associativo: 21.66918993
+
+Speedup: 1,997054687
+
+
+10¹⁰
+O valor de M_PI é: 3.141592653589793
+O valor de pi sequencial é: 3.141596794128418
+O valor de pi paralelo é: 3.141596794128418
+O valor de pi sequencial associativo é: 3.141596794128418
+
+Tempo do calculo sequencial: 30.55913901
+Tempo do calculo paralelo: 15.29190612
+Tempo do calculo sequencial associativo: 30.55855203
+
+Speedup: 1,998386517
+

@@ -1,0 +1,117 @@
+﻿Disciplina: Computacao Concorrente
+Prof.: Silvana Rossetto
+Laboratório: 6
+Julia Anne de Souza Alves
+
+
+
+Atividade 1
+
+1. Os possíveis valores da variável y são 0, 1 e 2.
+Se a thread 3 executar primeiro, ela imprimirá o valor 0, visto que x é declarado com o valor 0.
+Se a thread 2 executar, depois a thread 1 e por fim a thread 3, o valor que y pegará será o ultimo valor escrito em x, ou seja, 1 escrito pela thread 1.
+Da mesma forma, se a thread 1 executar, depois a thread 2 e por fim a thread 3, o valor que y pegará será 2.
+Não, pois a operação soma é atômica. O execução de uma linha de código assembly, que no caso é a cópia de um valor para uma posição de memória, não é interrompida, por essa razão, apenas será escrito 1 ou 2, nunca 3.
+4. Sim, pois o resultado final depende da ordem de execução das threads.
+
+Atividade 2
+1. 20000000.
+3. Não, porque há condição de corrida. As duas threads sobrescrevem, durante a execução, o valor de s. Muitas vezes, s é incrementado em uma thread e sobrescrito pela outra thread por um valor anteriormente passado.
+
+Atividade 3
+2. Sim, pois a introdução dos locks, eliminou a condição de corrida.
+
+Atividade 4
+3. Para valores abaixo de 10^6, o tempo sequencial é melhor que o tempo concorrente. 
+Para 10^6 
+Tempo Sequencial: 0.540605
+Tempo Concorrente: 0.621689
+
+Para 10^7                                      
+Tempo Sequencial: 13,826481
+Tempo Concorrente: 8,017699
+O ganho é de 1,72449
+
+Ambos foram executados com duas threads.
+
+
+
+SAÍDAS DOS ALGORITMOS
+
+Exemplo 1
+
+Thread : 2 esta executando...                                                                                                                                                   
+Thread : 2 terminou!                                                                                                                                                            
+Thread : 3 esta executando...                                                                                                                                                   
+Thread : 3 terminou!                                                                                                                                                            
+Valor de y = 2                                                                                                                                                                  
+Thread : 1 esta executando...                                                                                                                                                   
+Thread : 1 terminou!
+
+-------//--------
+
+Thread : 2 esta executando...                                                                                                                                                   
+Thread : 2 terminou!                                                                                                                                                            
+Thread : 1 esta executando...                                                                                                                                                   
+Thread : 1 terminou!                                                                                                                                                            
+Thread : 3 esta executando...                                                                                                                                                   
+Thread : 3 terminou!                                                                                                                                                            
+Valor de y = 1    
+
+-------------//-----------
+
+Thread : 3 esta executando...                                                                                                                                                   
+Thread : 3 terminou!                                                                                                                                                            
+Valor de y = 0                                                                                                                                                                  
+Thread : 2 esta executando...                                                                                                                                                   
+Thread : 2 terminou!                                                                                                                                                            
+Thread : 1 esta executando...                                                                                                                                                   
+Thread : 1 terminou! 
+
+-------------//------------
+
+
+Exemplo 2
+
+Thread : 1 esta executando...                                                                                                                                                   
+Thread : 0 esta executando...                                                                                                                                                   
+Thread : 0 terminou!                                                                                                                                                            
+Thread : 1 terminou!                                                                                                                                                            
+Valor de s = 10292266  
+
+--------//-------
+
+Thread : 0 esta executando...                                                                                                                                                   
+Thread : 1 esta executando...                                                                                                                                                   
+Thread : 1 terminou!                                                                                                                                                            
+Thread : 0 terminou!                                                                                                                                                            
+Valor de s = 12010100   
+
+
+Exemplo 3
+
+Thread : 1 esta executando...                                                                                                                                                   
+Thread : 0 esta executando...                                                                                                                                                   
+Thread : 0 terminou!                                                                                                                                                            
+Thread : 1 terminou!                                                                                                                                                            
+Valor de s = 20000000                                                                                                                                                           
+Tempo = 2.056278 
+
+
+
+Laboratório 6
+Com duas threads e 10^6
+
+Tempo Sequencial: 13.826481
+Tempo Concorrente: 8.017699
+- Algoritmo Sequencial:
+O numero de primos em 10000000 é: 664579
+- Algoritmo Paralelo:
+O numero de primos em 10000000 é: 664579
+
+Tempo Sequencial: 13.776293
+Tempo Concorrente: 8.934239
+- Algoritmo Sequencial:
+O numero de primos em 10000000 é: 664579
+- Algoritmo Paralelo:
+O numero de primos em 10000000 é: 664579
