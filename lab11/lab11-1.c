@@ -3,20 +3,45 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-#define NTHREADS 4
+#define LEITORES 4
+#define ESCRITORES 4
 
 sem_t em_l, em_e;
-sem_t lei, esc;
 
-int escritores, leitores;
+int leitores;
+
+// ---------- ATENÇÃO
+// Nessa solução, estarei dando prioridade aos leitores
+// Isso acarreta que: Se não houver um último leitor, ou seja, sempre ouver um novo leitor concorrentemente,
+// os escritores podem morrer de gome
+
+
+// Em ESCRITORES, preciso apenas de um semáforo de exclusão mútua entre eles.
+
+void InicEscritor(int pid){
+	sem_wait(&em_e);
+	// Exclusão mútua
+	// Quando um escritor for escrever, apenas pegará o sinal ou esperará caso ele não exista.
+}
+
+void FimEscritor(int pid){
+	sem_post(&em_e);
+	// Exclusão mútua
+	// Quando um escritor terminar, apenas deixará o sinal.
+}
+
+// Em LEITORES preciso completar a lógica
 
 void InicLeitor(int pid){
 	sem_wait(&em_l);
 
-	while(escritores > 0){
-		sem_wait(&lei);
-	}		
 	leitores++;
+	if(leitores == 1){
+		// Se eu for o primeiro leitor, bloqueio o acesso pra escritores
+		// Assim, enquanto houver leitores lendo, escritores não poderão escrever
+		// Mas outros leitores poderão ler o arquivo
+		sem_wait(&em_e);
+	}		
 
 	sem_post(&em_l);
 }
@@ -27,31 +52,12 @@ void FimLeitor(int pid){
 
 	leitores--;
 	if(leitores == 0){
-		sem_post(&lei);
+		// Se eu for o ultimo leitor, libero o acesso para escritores
+		// Ou seja, todos os leitores terminaram de ler, então poderá ser escrito
+		sem_post(&em_e);
 	}
 
 	sem_post(&em_l);
-}
-
-void InicEscritor(int pid){
-	sem_wait(&em_e);
-
-	while((leitores > 0) || (escritores > 0)) {
-		sem_wait(&esc);
-	}
-	escritores++;
-
-	sem_post(&em_e);
-}
-
-void FimEscritor(int pid){
-	sem_wait(&em_e);
-
-	escritores--;
-	sem_post(&esc);
-	sem_post(&lei);
-
-	sem_post(&em_e);
 }
 
 void *Leitor(void *arg){
@@ -62,11 +68,12 @@ void *Leitor(void *arg){
 		InicLeitor(pid);
 
 		printf("Eu sou a thread %d leitora e estou lendo\n", pid);
+		// Código para gastar tempo
+		boba1=1000; boba2=-1000; while (boba2 < boba1) boba2++;
 
 		FimLeitor(pid);
 		printf("Eu sou a thread %d leitora e terminei de ler\n", pid);
 
-		boba1=1000; boba2=-1000; while (boba2 < boba1) boba2++;
 	}
 
 	free(arg);
@@ -82,11 +89,12 @@ void *Escritor(void *arg){
 		InicEscritor(pid);
 
 		printf("Eu sou a thread %d escritora e estou escrevendo\n", pid);
+		// Código para gastar tempo
+		boba1=1000; boba2=-1000; while (boba2 < boba1) boba2++;
 
 		FimEscritor(pid);
 		printf("Eu sou a thread %d escritora e parei de escrever\n", pid);
 
-		boba1=1000; boba2=-1000; while (boba2 < boba1) boba2++;
 
 	}
 
@@ -95,22 +103,17 @@ void *Escritor(void *arg){
 	pthread_exit(NULL);
 }
 
-// Só preciso de um semaforo em escritores, de em.
-// E completar a logica em leitores
-// exclusão mutua para acessar variavel de controle de leitores
-// se eu for a primeira, sem wait
-// se eu for a ultima, sem post
-
 int main(int argc, char *argv[]) {
-	pthread_t threads[NTHREADS];
+	int nthreads = ESCRITORES + LEITORES;
+	pthread_t threads[nthreads];
 	int i, *pid;
 
+	// Inicializando os semáforos
 	sem_init(&em_l, 0, 1);
 	sem_init(&em_e, 0, 1);
-	sem_init(&lei, 0, 0);
-	sem_init(&esc, 0, 0);
 
-	for (i = 0; i < NTHREADS/2; i++){
+	// Criando as threads LEITORAS
+	for (i = 0; i < LEITORES; i++){
 		pid = malloc(sizeof(int));
 
 		if(pid == NULL){
@@ -121,7 +124,8 @@ int main(int argc, char *argv[]) {
 		pthread_create(&threads[i], NULL, Leitor, (void *) pid);
 	}
 
-	for (i = NTHREADS/2; i < NTHREADS; i++){
+	// Criando as threads ESCRITORAS
+	for (i = LEITORES; i < nthreads; i++){
 		pid = malloc(sizeof(int));
 
 		if(pid == NULL){
@@ -132,7 +136,8 @@ int main(int argc, char *argv[]) {
 		pthread_create(&threads[i], NULL, Escritor, (void *) pid);
 	}
 
-	for (i = 0; i < NTHREADS; i++) {
+	// Esperando todas terminarem - só que não, rs
+	for (i = 0; i < nthreads; i++) {
 		pthread_join(threads[i], NULL);
 	}
 
