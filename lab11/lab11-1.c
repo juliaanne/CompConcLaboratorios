@@ -8,7 +8,7 @@
 
 sem_t em_l, em_e;
 
-int leitores;
+int leitores=0;
 
 // ---------- ATENÇÃO
 // Nessa solução, estarei dando prioridade aos leitores
