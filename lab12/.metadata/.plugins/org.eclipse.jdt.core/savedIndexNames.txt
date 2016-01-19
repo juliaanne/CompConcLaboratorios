@@ -1,1 +1,0 @@
-INDEX VERSION 1.127+/home/juliaanne/Documentos/Academico/2015.2/CompConc/CompConcLaboratorios/lab12/.metadata/.plugins/org.eclipse.jdt.core
