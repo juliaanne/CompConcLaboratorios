@@ -17,8 +17,7 @@ public class Somatorio extends Thread
 	
 	public void run()
 	{
-		int inicio = id;
-		for (int i=inicio; i < vetorA.length; i+=2) {
+		for (int i=id; i < vetorA.length; i+=2) {
 			resultado[i] = vetorA[i]+vetorB[i];
 		}
 	}
