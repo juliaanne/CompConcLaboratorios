@@ -8,9 +8,9 @@ class S {
   }
 
   //operacao sobre o recurso compartilhado
-  public void inc() { 
+  /*public void inc() { 
      this.r++; 
-  }
+  }*/
   
   /*public void inc() { 
      synchronized(this) {
@@ -20,9 +20,9 @@ class S {
   
   // ou...
 
-  /*public synchronized void inc() { 
+  public synchronized void inc() { 
      this.r++; 
-  }*/
+  }
 
   //operacao sobre o recurso compartilhado
   public int get() { 
