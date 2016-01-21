@@ -1,23 +1,25 @@
 package lab12;
 
-import java.util.ArrayList;
 
 public class Somatorio extends Thread
 {
 	public int id;
-	Vetor V;
-	static ArrayList<Integer> resultado = new ArrayList<>();
+	public Integer[] resultado;
+	public static Integer[] vetorA = {5, 10, 15, 20, 25, 30};
+	public static Integer[] vetorB = {3, 6, 9, 12, 15, 18};
 	
-	public Somatorio(int id)
+	public Somatorio(int id, Integer[] resultado)
 	{ 
 	      this.id = id;
-	      System.out.println("Criada thread "+id);
+	      this.resultado = resultado;
+	      System.out.println("Criada thread " + id);
 	}
 	
 	public void run()
 	{
-		for (int i=0; i<; i++) {
-			
+		int inicio = id;
+		for (int i=inicio; i < vetorA.length; i+=2) {
+			resultado[i] = vetorA[i]+vetorB[i];
 		}
 	}
 }
